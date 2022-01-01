@@ -11,6 +11,10 @@ export default function ErrorPopup() {
             background-color: #f44336;
             color: white;
           }
+
+          .alert.success {background-color: #04AA6D;}
+          .alert.info {background-color: #2196F3;}
+          .alert.warning {background-color: #ff9800;}
           
           .closebtn {
             margin-left: 15px;
@@ -27,7 +31,7 @@ export default function ErrorPopup() {
             color: black;
           }
         `}</style>
-      <div className="alert" style={{display: msg?.show ? 'block' : 'none'}}>
+      <div className={`alert ${msg?.type && msg?.type != "error" ? msg.type : ""}`} style={{ display: msg?.show ? 'block' : 'none' }}>
         <span className="closebtn" onClick={() => {
           setMsg({
             show: false,

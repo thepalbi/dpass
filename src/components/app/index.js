@@ -78,7 +78,11 @@ export default function App() {
       <input className='btn' type="button" onClick={requestAccount} value="Request Acct" />
       <input className='btn' type="button" onClick={async () => {
         const balance = await getBalance();
-        alert("Balance is: " + balance);
+        setMsg({
+          msg: `Balance: ${balance}`,
+          type: "info",
+          show: true,
+        });
       }} value="Get balance" />
       <input className='btn' type="button" onClick={async () => {
         if (!vaultKey) {
@@ -90,7 +94,11 @@ export default function App() {
           return;
         }
         let value = await retrieveVaultItem(vaultKey);
-        alert("Retrieved value: " + value);
+        setMsg({
+          msg: `Retrieved value: ${value}`,
+          type: "info",
+          show: true,
+        });
       }} value="Retrieve from vault" />
       <input className='btn' type="button" onClick={async () => {
         await storeVaultItem(vaultKey, vaultValue);
